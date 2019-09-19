@@ -1,8 +1,11 @@
 import React from 'react';
+import Todo from '../todo/Todo'
+import About from '../about/About'
 
 const App = ()=> (
     <div className="container">
-        <h1><i className="fas fa-adjust"></i> Front End Todo App </h1>
+        <Todo/>
+        <About/>
     </div>
 );
 
