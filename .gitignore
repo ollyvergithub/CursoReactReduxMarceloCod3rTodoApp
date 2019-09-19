@@ -1,5 +1,6 @@
 *.idea
 backend/node_modules/
+_backend_ollyver_deu_404_na_api/node_modules/
 backend/*.log
 
 # Created by https://www.gitignore.io/api/phpstorm
@@ -86,4 +87,4 @@ fabric.properties
 # Sonarlint plugin
 .idea/sonarlint
 
-# End of https://www.gitignore.io/api/phpstorm 
+# End of https://www.gitignore.io/api/phpstorm
