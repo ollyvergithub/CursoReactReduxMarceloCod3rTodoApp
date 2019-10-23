@@ -1,4 +1,5 @@
 import React from 'react';
+import PageHeader from '../template/pageHeader';
 
 class Todo extends React.Component{
     constructor(props){
@@ -8,7 +9,7 @@ class Todo extends React.Component{
     render() {
         return(
             <div>
-                <h1>Componente Todo.js</h1>
+                <PageHeader titulo="Tarefas" titulo_menor="Cadastro"/>
             </div>
         )
     }
