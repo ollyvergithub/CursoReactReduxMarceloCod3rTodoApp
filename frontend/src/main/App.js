@@ -1,14 +1,12 @@
 import React from 'react';
-import Todo from '../todo/Todo'
-import About from '../about/About'
 import Menu from '../template/Menu';
+import Routes from '../main/Routes'
 
 const App = ()=> (
     <section id="main" role="main">
         <Menu/>
         <section className="container">
-            <Todo/>
-            <About/>
+            <Routes/>
         </section>
     </section>
 );
