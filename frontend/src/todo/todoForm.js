@@ -1,14 +1,19 @@
 import React from 'react';
+import Grid from '../template/Grid';
+import Button from '../template/Button';
 
 export default props => (
     <div className="row">
 
-            <div className="col-12 col-md-9 col-lg-10">
-                <input type="text" className="form-control" id="description" placeholder="Adicione tarefas"/>
-            </div>
-            <div className="col-12 col-md-3 col-lg-2">
-                <button type="submit" className="btn btn-primary"><i className="fa fa-plus"></i></button>
-            </div>
+        <Grid cols='12 9 10'>
+
+            <input type="text" className="form-control" id="description" placeholder="Adicione tarefas"/>
+        </Grid>
+
+
+        <Grid cols='12 3 2'>
+            <Button style='primary' icon="plus"/>
+        </Grid>
 
     </div>
 
