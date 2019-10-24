@@ -8,11 +8,15 @@ class Todo extends React.Component{
         super(props);
     }
 
+    handleAdd(){
+        console.log(this);
+    }
+
     render() {
         return(
             <div>
                 <PageHeader titulo="Tarefas" titulo_menor="Cadastro"/>
-                <TodoForm/>
+                <TodoForm handleAdd={this.handleAdd.bind(this)}/>
                 <TodoList/>
             </div>
         )
