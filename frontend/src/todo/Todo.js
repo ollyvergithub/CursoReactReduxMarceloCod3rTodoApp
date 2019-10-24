@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 
 import PageHeader from '../template/pageHeader';
 import TodoForm from '../todo/todoForm';
@@ -14,15 +15,17 @@ class Todo extends React.Component{
 
     handleChange(e){
         this.setState({...this.state, description: e.target.value})
-        console.log(this.state.description)
+
     }
 
     handleAdd(){
-        console.log(this);
-        console.log(this.state.description);
         const DESCRIPTION = this.state.description;
 
-        const requestInfo = {
+        Axios.post(URL, {description: DESCRIPTION})
+            .then(resposta => console.log('Funcionou com AXIOS'))
+
+
+/*        const requestInfo = {
             method:'POST',
             body:JSON.stringify({description: DESCRIPTION}),
             headers: new Headers({
@@ -40,7 +43,7 @@ class Todo extends React.Component{
             })
             .then(resposta=>{
                 console.log(resposta)
-            })
+            })*/
 
     }
 
