@@ -21,6 +21,13 @@ class Todo extends React.Component{
             .then(resposta => this.setState({...this.state, description, list:resposta.data}))
     }
 
+    handleClear(){
+
+        console.log('Entrei');
+
+        this.refresh();
+    }
+
     handleSearch(){
         this.refresh(this.state.description)
     }
@@ -79,6 +86,7 @@ class Todo extends React.Component{
                 <PageHeader titulo="Tarefas" titulo_menor="Cadastro"/>
                 <TodoForm
                     description={this.state.description}
+                    handleClear = {this.handleClear.bind(this)}
                     handleSearch = {this.handleSearch.bind(this)}
                     handleAdd={this.handleAdd.bind(this)}
                     handleChange={this.handleChange.bind(this)} />
