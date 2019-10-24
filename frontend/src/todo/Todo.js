@@ -10,20 +10,31 @@ const URL = 'http://localhost:3003/api/todos';
 class Todo extends React.Component{
     constructor(props){
         super(props);
-        this.state= {description: '', list: []}
+        this.state= {description: '', list: []};
+
+        this.refresh();
+    }
+
+    refresh(){
+
+        Axios.get(`${URL}?sort=-createdAt`)
+            .then(resposta => this.setState({...this.state, description: '', list:resposta.data}))
+    }
+
+    handleRemove(todo){
+        Axios.delete(`${URL}/${todo._id}`)
+            .then(resposta => this.refresh())
     }
 
     handleChange(e){
         this.setState({...this.state, description: e.target.value})
-
     }
 
     handleAdd(){
         const DESCRIPTION = this.state.description;
 
         Axios.post(URL, {description: DESCRIPTION})
-            .then(resposta => console.log('Funcionou com AXIOS'))
-
+            .then(resposta => this.refresh())
 
 /*        const requestInfo = {
             method:'POST',
@@ -51,8 +62,8 @@ class Todo extends React.Component{
         return(
             <div>
                 <PageHeader titulo="Tarefas" titulo_menor="Cadastro"/>
-                <TodoForm handleAdd={this.handleAdd.bind(this)} handleChange={this.handleChange.bind(this)} />
-                <TodoList/>
+                <TodoForm description={this.state.description} handleAdd={this.handleAdd.bind(this)} handleChange={this.handleChange.bind(this)} />
+                <TodoList list={this.state.list} handleRemove = {this.handleRemove.bind(this)}/>
             </div>
         )
     }
