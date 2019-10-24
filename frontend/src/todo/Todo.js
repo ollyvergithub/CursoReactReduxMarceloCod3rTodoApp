@@ -16,9 +16,19 @@ class Todo extends React.Component{
     }
 
     refresh(){
-
         Axios.get(`${URL}?sort=-createdAt`)
             .then(resposta => this.setState({...this.state, description: '', list:resposta.data}))
+    }
+
+    handelMarkeAsDone(todo){
+        Axios.put(`${URL}/${todo._id}`, {...todo, done:true})
+            .then(resposta=> this.refresh())
+
+    }
+
+    handleMarkAsPending(todo){
+        Axios.put(`${URL}/${todo._id}`, {...todo, done:false})
+            .then(resposta=> this.refresh())
     }
 
     handleRemove(todo){
@@ -62,8 +72,15 @@ class Todo extends React.Component{
         return(
             <div>
                 <PageHeader titulo="Tarefas" titulo_menor="Cadastro"/>
-                <TodoForm description={this.state.description} handleAdd={this.handleAdd.bind(this)} handleChange={this.handleChange.bind(this)} />
-                <TodoList list={this.state.list} handleRemove = {this.handleRemove.bind(this)}/>
+                <TodoForm
+                    description={this.state.description}
+                    handleAdd={this.handleAdd.bind(this)}
+                    handleChange={this.handleChange.bind(this)} />
+                <TodoList
+                    list={this.state.list}
+                    handelMarkeAsDone = {this.handelMarkeAsDone.bind(this)}
+                    handleMarkAsPending = {this.handleMarkAsPending.bind(this)}
+                    handleRemove = {this.handleRemove.bind(this)}/>
             </div>
         )
     }
